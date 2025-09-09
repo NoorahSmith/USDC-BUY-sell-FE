@@ -66,5 +66,19 @@
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2",
     "ws": "^8.18.3"
+  },
+  "resolutions": {
+    "qrcode.react": "^3.1.0",
+    "react-qr-reader": "^3.0.0-beta-1"
+  },
+  "overrides": {
+    "qrcode.react": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "react-qr-reader": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }
