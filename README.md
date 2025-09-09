@@ -46,6 +46,11 @@ A modern Next.js frontend for the USDC Buy/Sell Solana program, built with the l
 - **ESLint**: Code linting
 - **Prettier**: Code formatting
 - **Turbopack**: Fast development builds
+###Pictures######
+<img width="2399" height="1489" alt="Screenshot_20250909_201304" src="https://github.com/user-attachments/assets/8caa340e-5afb-46f4-a706-30fac2a9f367" />
+<img width="2560" height="1600" alt="Screenshot_20250909_202406" src="https://github.com/user-attachments/assets/c89aad58-a01b-4b55-afa7-aa5781fa152f" />
+<img width="2560" height="1600" alt="Screenshot_20250909_202442" src="https://github.com/user-attachments/assets/50ba76d4-abff-4e19-9d9b-1df5fdd4d4a1" />
+
 
 ## 📁 Project Structure
 
