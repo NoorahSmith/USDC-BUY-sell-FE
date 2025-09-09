@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Connection } from '@solana/web3.js';
 import { AnchorClient } from '@/lib/anchor';
@@ -20,7 +20,7 @@ export function WalletBalances() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchBalances = async () => {
+  const fetchBalances = useCallback(async () => {
     if (!connected || !publicKey || !signTransaction || !signAllTransactions) {
       setBalances(null);
       setLoading(false);
@@ -46,7 +46,7 @@ export function WalletBalances() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [connected, publicKey, signTransaction, signAllTransactions]);
 
   useEffect(() => {
     fetchBalances();
@@ -54,7 +54,7 @@ export function WalletBalances() {
       const interval = setInterval(fetchBalances, 10000); // Refresh every 10 seconds
       return () => clearInterval(interval);
     }
-  }, [publicKey, connected, signTransaction, signAllTransactions]);
+  }, [publicKey, connected, signTransaction, signAllTransactions, fetchBalances]);
 
   if (!connected || !publicKey) {
     return (

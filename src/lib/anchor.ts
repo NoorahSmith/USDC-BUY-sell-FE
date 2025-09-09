@@ -142,7 +142,7 @@ export class AnchorClient {
         );
         const tokenAccountInfo = await this.connection.getTokenAccountBalance(usdcTokenAccount);
         usdcBalance = parseInt(tokenAccountInfo.value.amount);
-      } catch (error) {
+      } catch {
         console.log('USDC token account not found, balance is 0');
         usdcBalance = 0;
       }
@@ -203,7 +203,8 @@ export class AnchorClient {
 
       // Sign and send the transaction using the wallet
       const signedTx = await this.walletAdapter.signTransaction(tx);
-      const signature = await this.connection.sendRawTransaction(signedTx.serialize());
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const signature = await this.connection.sendRawTransaction((signedTx as any).serialize());
       await this.connection.confirmTransaction(signature);
       console.log('Buy USDC transaction signature:', signature);
       
@@ -259,7 +260,8 @@ export class AnchorClient {
 
       // Sign and send the transaction using the wallet
       const signedTx = await this.walletAdapter.signTransaction(tx);
-      const signature = await this.connection.sendRawTransaction(signedTx.serialize());
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const signature = await this.connection.sendRawTransaction((signedTx as any).serialize());
       await this.connection.confirmTransaction(signature);
       console.log('Sell USDC transaction signature:', signature);
       

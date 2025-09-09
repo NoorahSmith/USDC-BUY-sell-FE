@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Connection } from '@solana/web3.js';
 import { AnchorClient } from '@/lib/anchor';
@@ -23,7 +23,7 @@ export function BuySellInterface() {
   const [walletError, setWalletError] = useState<string | null>(null);
   const [walletBalances, setWalletBalances] = useState<{ solBalance: number; usdcBalance: number } | null>(null);
 
-  const fetchWalletBalances = async () => {
+  const fetchWalletBalances = useCallback(async () => {
     if (!connected || !publicKey || !signTransaction || !signAllTransactions) {
       setWalletBalances(null);
       return;
@@ -44,7 +44,7 @@ export function BuySellInterface() {
     } catch (err) {
       console.error('Error fetching wallet balances:', err);
     }
-  };
+  }, [connected, publicKey, signTransaction, signAllTransactions]);
 
   const validateInput = (value: string): string | null => {
     if (!value || value.trim() === '') {
@@ -88,7 +88,7 @@ export function BuySellInterface() {
       const interval = setInterval(fetchWalletBalances, 10000); // Refresh every 10 seconds
       return () => clearInterval(interval);
     }
-  }, [connected, publicKey, signTransaction, signAllTransactions]);
+  }, [connected, publicKey, signTransaction, signAllTransactions, fetchWalletBalances]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

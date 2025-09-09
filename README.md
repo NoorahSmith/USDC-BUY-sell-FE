@@ -88,7 +88,7 @@ fe/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Solana CLI (for program deployment)
 - A Solana wallet (Phantom, Solflare, etc.)
@@ -161,13 +161,13 @@ This script will:
 
 1. **Connect Wallet**: Click the wallet button in the header
 2. **View Market Stats**: See current market state and available liquidity
-3. **Buy USDC**: 
+3. **Buy USDC**:
    - Enter SOL amount (max 2 SOL)
    - Click "Buy USDC"
    - Confirm transaction in wallet
 4. **Sell USDC**:
    - Enter USDC amount
-   - Click "Sell USDC" 
+   - Click "Sell USDC"
    - Confirm transaction in wallet
 
 ### Account Management
@@ -302,13 +302,13 @@ NEXT_PUBLIC_DEBUG=true
 class AnchorClient {
   // Get current market state
   async getMarketState(): Promise<MarketState | null>
-  
+
   // Get market statistics
   async getMarketStats(): Promise<MarketStats | null>
-  
+
   // Buy USDC with SOL
   async buyUSDC(solAmount: number): Promise<string>
-  
+
   // Sell USDC for SOL
   async sellUSDC(usdcAmount: number): Promise<string>
 }
